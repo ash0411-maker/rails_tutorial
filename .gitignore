@@ -25,3 +25,19 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+.bash_history
+.npm/
+.config/
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/public/entry
+/public/entry-test
+/public/uploads
+/node_modules
+yarn-debug.log*
+.yarn-integrity
+/public/packs
+/public/packs-test
+/.env
+
