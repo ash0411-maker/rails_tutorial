@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       #詳細画面にリダイレクト
       redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = t('.login_error')
       render 'new'
