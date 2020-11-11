@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
       #log_inメソッド（session[:user_id]にuser.idを代入）
       log_in user
       #詳細画面にリダイレクト
-      redirect_to user
       redirect_back_or user
     else
       flash.now[:danger] = t('.login_error')
