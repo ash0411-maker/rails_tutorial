@@ -1,0 +1,6 @@
+{
+  # ここから記述
+  "emmet.includeLanguages": {
+      "erb": "html"
+  }
+}
