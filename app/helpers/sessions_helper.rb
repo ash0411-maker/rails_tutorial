@@ -40,7 +40,7 @@ module SessionsHelper
 
   #記憶したURLにリダイレクト
   def redirect_back_or(default)
-    reidrect_to(session[:forwarding_url] || default)
+    redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)
   end
 
