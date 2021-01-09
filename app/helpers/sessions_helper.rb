@@ -12,6 +12,10 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  def current_user?(user)
+    user =! current_user
+  end
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
@@ -25,5 +29,24 @@ module SessionsHelper
   def logout
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  # 永続的セッションを破棄する
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+
+  #記憶したURLにリダイレクト
+  def redirect_back_or(default)
+    reidrect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # アクセスしようとしたURLを覚えておく
+  # リクエストで送られてきたURLをsession変数の:forwarding_urlキーに格納。
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
